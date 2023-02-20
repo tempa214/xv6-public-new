@@ -99,6 +99,10 @@ sys_time_scheduled(void)
 
   if(argint(0, &pid) < 0)
     return -1;
-  
-  return time_scheduled(pid);
+
+  struct proc* p = get_proc(pid);
+  if(p == 0)
+    return -1;
+
+  return p->time_scheduled;
 }
