@@ -56,3 +56,11 @@ struct proc {
 //   original data and bss
 //   fixed-size stack
 //   expandable heap
+
+//new lines
+
+struct proc {
+  ...
+  int time_sched;  // Add this line for time scheduled
+  ...
+}
