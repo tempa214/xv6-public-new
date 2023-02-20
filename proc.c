@@ -567,3 +567,19 @@ trap(struct trapframe *tf)
 
   ...
 }
+
+
+//new lines
+struct proc*
+get_proc(int pid)
+{
+  struct proc* p;
+
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if(p->pid == pid)
+      return p;
+  }
+
+  return 0;
+}
+
