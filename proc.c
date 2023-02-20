@@ -532,3 +532,34 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+//new lines
+
+int ticks;
+...
+
+void
+tvinit(void)
+{
+  ...
+
+  for(i = 0; i < NPROC; i++)
+    proc[i].time_sched = 0;  // initialize time_sched variable
+
+  ...
+}
+
+...
+
+void
+trap(struct trapframe *tf)
+{
+  ...
+
+  // Increment time_sched variable for the currently running process
+  if(proc && tf->trapno == T_IRQ0+IRQ_TIMER)
+    ticks++;
+    proc->time_sched++;
+
+  ...
+}
