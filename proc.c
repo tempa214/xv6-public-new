@@ -75,6 +75,8 @@ allocproc(void)
 {
   struct proc *p;
   char *sp;
+  p->time_scheduled = 0;
+
 
   acquire(&ptable.lock);
 
