@@ -341,8 +341,10 @@ scheduler(void)
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
+      p->time_scheduled++;
       c->proc = p;
       switchuvm(p);
+      p->cpu_ticks_in = ticks;
       p->state = RUNNING;
 
       swtch(&(c->scheduler), p->context);
