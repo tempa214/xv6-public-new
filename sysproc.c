@@ -89,3 +89,16 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+
+//new lines
+int
+sys_time_scheduled(void)
+{
+  int pid;
+
+  if(argint(0, &pid) < 0)
+    return -1;
+  
+  return time_scheduled(pid);
+}
