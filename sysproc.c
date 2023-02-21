@@ -100,7 +100,7 @@ sys_time_scheduled(void)
   if(argint(0, &pid) < 0)
     return -1;
 
-  struct proc* p = set_proc(pid);
+  struct proc* p = setproc(pid);
   if(p == 0)
     return -1;
 
