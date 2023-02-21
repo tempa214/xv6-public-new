@@ -537,49 +537,4 @@ procdump(void)
   }
 }
 
-//new lines
-
-int ticks;
-...
-
-void
-tvinit(void)
-{
-  ...
-
-  for(i = 0; i < NPROC; i++)
-    proc[i].time_sched = 0;  // initialize time_sched variable
-
-  ...
-}
-
-...
-
-void
-trap(struct trapframe *tf)
-{
-  ...
-
-  // Increment time_sched variable for the currently running process
-  if(proc && tf->trapno == T_IRQ0+IRQ_TIMER)
-    ticks++;
-    proc->time_sched++;
-
-  ...
-}
-
-
-//new lines
-struct proc*
-get_proc(int pid)
-{
-  struct proc* p;
-
-  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-    if(p->pid == pid)
-      return p;
-  }
-
-  return 0;
-}
 
