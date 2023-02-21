@@ -143,7 +143,7 @@ userinit(void)
 
   safestrcpy(p->name, "initcode", sizeof(p->name));
   p->cwd = namei("/");
-  np->stime = 0; // initialize process's stime to 0
+  p->stime = 0; // initialize process's stime to 0
   
 
   // this assignment to p->state lets other cores
