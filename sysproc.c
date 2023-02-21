@@ -95,14 +95,5 @@ sys_uptime(void)
 int
 sys_time_scheduled(void)
 {
-  int pid;
-
-  if(argint(0, &pid) < 0)
-    return -1;
-
-  struct proc* p = setproc(pid);
-  if(p == 0)
-    return -1;
-
-  return p->time_scheduled;
+  return myproc()->stime;
 }
