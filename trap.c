@@ -40,6 +40,8 @@ trap(struct trapframe *tf)
     if(myproc()->killed)
       exit();
     myproc()->tf = tf;
+    if(myproc() && tf->trapno == T_IRQ0+IRQ_TIMER)
+      myproc()->stime++; // update process's stime
     syscall();
     if(myproc()->killed)
       exit();
