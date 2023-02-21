@@ -98,7 +98,6 @@ found:
     p->state = UNUSED;
     return 0;
   }
-  p->time_scheduled = 0;
   sp = p->kstack + KSTACKSIZE;
 
   // Leave room for trap frame.
@@ -144,6 +143,8 @@ userinit(void)
 
   safestrcpy(p->name, "initcode", sizeof(p->name));
   p->cwd = namei("/");
+  np->stime = 0; // initialize process's stime to 0
+  
 
   // this assignment to p->state lets other cores
   // run this process. the acquire forces the above
