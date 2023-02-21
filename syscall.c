@@ -142,7 +142,7 @@ syscall(void)
 
   num = curproc->tf->eax;
   if (SYS_time_scheduled){
-    return sys_time_scheduled()
+    return sys_time_scheduled();
     }
  
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
