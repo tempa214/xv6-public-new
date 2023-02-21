@@ -75,7 +75,7 @@ allocproc(void)
 {
   struct proc *p;
   char *sp;
-  p->time_scheduled = 0;
+
 
 
   acquire(&ptable.lock);
@@ -98,6 +98,7 @@ found:
     p->state = UNUSED;
     return 0;
   }
+  p->time_scheduled = 0;
   sp = p->kstack + KSTACKSIZE;
 
   // Leave room for trap frame.
