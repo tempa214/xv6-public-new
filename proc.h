@@ -51,6 +51,7 @@ struct proc {
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
   int time_scheduled; // time process has been scheduled in ticks
+  int stime;
 };
 
 // Process memory is laid out contiguously, low addresses first:
