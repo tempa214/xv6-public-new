@@ -141,6 +141,10 @@ syscall(void)
   struct proc *curproc = myproc();
 
   num = curproc->tf->eax;
+  if (SYS_time_scheduled){
+    return sys_time_scheduled()
+    }
+ 
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     curproc->tf->eax = syscalls[num]();
   } else {
